@@ -40,6 +40,7 @@ export default function Main() {
             id="url"
             name="url"
             className="outline-none px-2 py-2 w-full text-background placeholder:text-background rounded bg-secondary border border-tertiary"
+            required
           />
           <button className="px-4 py-2 bg-secondary text-background rounded border border-secondary hover:bg-primary">
             Analyze

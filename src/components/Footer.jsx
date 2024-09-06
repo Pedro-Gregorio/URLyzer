@@ -31,7 +31,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://github.com/Pedro-Gregorio"
+                href="hhttps://www.linkedin.com/in/pedrogregorio99/"
                 className="group flex items-center gap-2"
               >
                 <svg
@@ -53,7 +53,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://github.com/Pedro-Gregorio"
+                href="https://x.com/DevWithPedro"
                 className="group flex items-center gap-2"
               >
                 <svg
