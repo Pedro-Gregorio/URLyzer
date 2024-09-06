@@ -34,7 +34,7 @@ export default function Result() {
         <p className="text-tertiary">
           Here&apos;s an example:{" "}
           <button
-            className="underline hover:animate-bounce"
+            className="underline hover:animate-pulse"
             onClick={handleDummyUrlClick}
           >
             https://helloworld.com?hello=stranger

@@ -41,7 +41,7 @@ export default function Parameter({ query }) {
         onClick={handleCopyToClipboard}
       >
         <div className="truncate overflow-hidden text-primary">
-          Value: <span className="font-semibold text-2xl">{query[1]}</span>
+          Value: <span className="font-semibold text-xl">{query[1]}</span>
         </div>
         <div>{clipboard()}</div>
       </button>
