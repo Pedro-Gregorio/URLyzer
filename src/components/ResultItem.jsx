@@ -14,7 +14,7 @@ export default function ResultItem({ query }) {
   function clipboard() {
     if (copying) {
       return (
-        <p className="text-primary animate-pulse">Copied to your clipboard!</p>
+        <p className="text-primary animate-pulse">Copied!</p>
       );
     } else {
       return (

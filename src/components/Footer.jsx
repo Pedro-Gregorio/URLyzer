@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="absolute bottom-0 min-h-fit bg-primary text-accent w-full rounded-t-3xl">
+    <div className="mt-10 min-h-fit bg-primary text-accent w-full rounded-t-3xl">
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-around">
         <h2 className="py-4">
           Made with love by{" "}

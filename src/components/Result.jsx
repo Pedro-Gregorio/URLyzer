@@ -7,16 +7,20 @@ export default function Result() {
   return (
     <div className="container mx-auto px-4 mt-4">
       <ul className="p-4 border border-accent rounded">
-        <p className="text-xl font-semibold text-secondary text-center mb-2">Query Parameters</p>
-        {result.length !== 0 &&
-          result.map((queryParameter, index) => (
-            <>
+        {result.length ? (
+          <>
+            <p className="text-xl font-semibold text-secondary text-center mb-2">
+              Query Parameters
+            </p>
+            {result.map((queryParameter, index) => (
               <li key={index} className="mb-2 py-2 border-b">
                 <ResultItem query={queryParameter} />
               </li>
-            </>
-          ))}
-        {result.length === 0 && <p>Yo, enter an URL</p>}
+            ))}
+          </>
+        ) : (
+          <p className="text-secondary">Enter a URL above to analyze it.</p>
+        )}
       </ul>
     </div>
   );

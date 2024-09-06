@@ -18,10 +18,12 @@ function App() {
   }
 
   return (
-    <div className="static min-h-screen bg-background mx-auto">
-      <Header />
-      <Main />
-      <Result />
+    <div className="flex flex-col min-h-screen bg-background">
+      <div className="flex-grow">
+        <Header />
+        <Main />
+        <Result />
+      </div>
       <Footer />
     </div>
   );
