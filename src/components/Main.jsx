@@ -17,7 +17,10 @@ export default function Main() {
       const inputUrl = new URL(inpUrl);
       const searchParameters = [];
       inputUrl.searchParams.forEach((value, key) => {
-        searchParameters.push([key, value]);
+        searchParameters.push([
+          encodeURIComponent(key),
+          encodeURIComponent(value),
+        ]);
       });
       dispatch(
         extract({
