@@ -1,30 +1,38 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { extract } from "../store/extractSlice";
+import { useState } from "react";
 
 export default function Main() {
-  const url = useSelector((state) => state.extract.url);
   const dispatch = useDispatch();
+  const [inpUrl, setInpUrl] = useState("");
+
+  function handleInputChange(event) {
+    setInpUrl(event.target.value);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    const fd = new FormData(event.target);
-    const data = Object.fromEntries(fd.entries());
-
-    let queryString = data.url.split("?")[1];
-    queryString = queryString ? queryString.split("#")[0] : "";
-
-    let queryParams = [];
-    if (queryString) {
-      queryString.split("&").forEach((param) => {
-        const [key, value] = param.split("=");
-        queryParams.push([decodeURIComponent(key), decodeURIComponent(value)]); // Store as [key, value] pairs
+    try {
+      const inputUrl = new URL(inpUrl);
+      const searchParameters = [];
+      inputUrl.searchParams.forEach((value, key) => {
+        searchParameters.push([key, value]);
       });
+      dispatch(
+        extract({
+          origin: inputUrl.origin,
+          parameters: searchParameters,
+          message: "",
+        })
+      );
+      setInpUrl("");
+    } catch (error) {
+      console.log(error);
+      dispatch(
+        extract({ origin: "", parameters: [], message: "Invalid URL." })
+      );
     }
-
-    dispatch(extract({ url: data.url, result: queryParams }));
-
-    console.log("Query Parameters:", queryParams);
   }
 
   return (
@@ -35,10 +43,12 @@ export default function Main() {
           className="w-full py-4 px-4 flex items-center gap-4"
         >
           <input
-            placeholder={url !== "" ? url : "Enter your URL"}
+            placeholder={"Paste your URL here to analyze it."}
             type="text"
             id="url"
             name="url"
+            value={inpUrl}
+            onChange={handleInputChange}
             className="outline-none px-2 py-2 w-full text-background placeholder:text-background rounded bg-secondary border border-tertiary"
             required
           />

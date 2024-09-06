@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const extractInitialState = {
-  url: "",
-  result: [],
+  origin: "",
+  parameters: [],
+  message: "",
 };
 
 export const extractSlice = createSlice({
@@ -10,8 +11,9 @@ export const extractSlice = createSlice({
   initialState: extractInitialState,
   reducers: {
     extract: (state, action) => {
-      state.url = action.payload.url;
-      state.result = action.payload.result;
+      state.origin = action.payload.origin;
+      state.parameters = action.payload.parameters;
+      state.message = action.payload.message;
     },
   },
 });

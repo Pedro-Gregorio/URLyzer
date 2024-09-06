@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ResultItem({ query }) {
+export default function Parameter({ query }) {
   const [copying, setCopying] = useState(false);
 
   function handleCopyToClipboard() {
@@ -13,9 +13,7 @@ export default function ResultItem({ query }) {
 
   function clipboard() {
     if (copying) {
-      return (
-        <p className="text-primary animate-pulse">Copied!</p>
-      );
+      return <p className="text-primary animate-pulse">Copied!</p>;
     } else {
       return (
         <svg
@@ -42,13 +40,10 @@ export default function ResultItem({ query }) {
         className="group w-full flex items-center justify-between"
         onClick={handleCopyToClipboard}
       >
-        <p className="text-primary">
-          Value:{" "}
-          <span className="font-semibold text-2xl text-ellipsis overflow-hidden">
-            {query[1]}
-          </span>
-        </p>
-        {clipboard()}
+        <div className="truncate overflow-hidden text-primary">
+          Value: <span className="font-semibold text-2xl">{query[1]}</span>
+        </div>
+        <div>{clipboard()}</div>
       </button>
     </div>
   );

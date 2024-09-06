@@ -1,12 +1,12 @@
 export default function Footer() {
   return (
-    <div className="mt-10 min-h-fit bg-primary text-accent w-full rounded-t-3xl">
+    <div className="mt-10 min-h-fit bg-primary text-background w-full rounded-t-3xl">
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-around">
         <h2 className="py-4">
           Made with love by{" "}
           <a
             href="mailto:pedro-gregorio@outlook.pt"
-            className="font-semibold underline hover:text-background transition duration-500"
+            className="font-semibold underline hover:text-tertiary transition duration-500"
           >
             Pedro Gregório
           </a>
@@ -17,9 +17,10 @@ export default function Footer() {
               <a
                 href="https://github.com/Pedro-Gregorio"
                 className="group flex items-center gap-2"
+                target="_blank"
               >
                 <svg
-                  className="w-8 fill-accent group-hover:fill-background transition duration-300"
+                  className="w-8 fill-background group-hover:fill-tertiary transition duration-300"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -33,9 +34,10 @@ export default function Footer() {
               <a
                 href="hhttps://www.linkedin.com/in/pedrogregorio99/"
                 className="group flex items-center gap-2"
+                target="_blank"
               >
                 <svg
-                  className="w-8 fill-accent group-hover:fill-background transition duration-300"
+                  className="w-8 fill-background group-hover:fill-tertiary transition duration-300"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -55,9 +57,10 @@ export default function Footer() {
               <a
                 href="https://x.com/DevWithPedro"
                 className="group flex items-center gap-2"
+                target="_blank"
               >
                 <svg
-                  className="w-8 fill-accent group-hover:fill-background transition duration-300"
+                  className="w-8 fill-background group-hover:fill-tertiary transition duration-300"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

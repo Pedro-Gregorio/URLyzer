@@ -1,26 +1,56 @@
-import { useSelector } from "react-redux";
-import ResultItem from "./ResultItem";
+import { useDispatch, useSelector } from "react-redux";
+import { extract } from "../store/extractSlice";
+import Title from "./ui/Title";
+import Parameters from "./ui/Parameters";
 
 export default function Result() {
-  const result = useSelector((state) => state.extract.result);
+  const origin = useSelector((state) => state.extract.origin);
+  const parameters = useSelector((state) => state.extract.parameters);
+  const message = useSelector((state) => state.extract.message);
+  const dispatch = useDispatch();
+
+  function handleDummyUrlClick() {
+    dispatch(
+      extract({
+        origin: "https://helloworld.com",
+        parameters: [["hello", "stranger"]],
+        message: "",
+      })
+    );
+  }
+
+  if (message !== "") {
+    return (
+      <div className="container mx-auto px-4 mt-4">
+        <p className="text-secondary">{message}</p>
+      </div>
+    );
+  }
+
+  if (origin === "" && message === "") {
+    return (
+      <div className="container mx-auto px-4 mt-4">
+        <p className="text-secondary">Paste an URL above to analyze it.</p>
+        <p className="text-tertiary">
+          Here&apos;s an example:{" "}
+          <button
+            className="underline hover:animate-bounce"
+            onClick={handleDummyUrlClick}
+          >
+            https://helloworld.com?hello=stranger
+          </button>
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto px-4 mt-4">
-      <ul className="p-4 border border-accent rounded">
-        {result.length ? (
-          <>
-            <p className="text-xl font-semibold text-secondary text-center mb-2">
-              Query Parameters
-            </p>
-            {result.map((queryParameter, index) => (
-              <li key={index} className="mb-2 py-2 border-b">
-                <ResultItem query={queryParameter} />
-              </li>
-            ))}
-          </>
-        ) : (
-          <p className="text-secondary">Enter a URL above to analyze it.</p>
-        )}
+    <div className="container mx-auto px-4 mt-4 ">
+      <ul className="border border-accent rounded px-4 py-4">
+        <Title title={origin} />
+        <div className="p-4 border border-accent rounded">
+          <Parameters parameters={parameters} />
+        </div>
       </ul>
     </div>
   );
