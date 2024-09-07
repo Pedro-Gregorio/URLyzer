@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const themeInitialState = {
-  value: "dark",
-  icon: "./light-mode.svg",
+  value: "light",
+  icon: "./dark-mode.svg",
 };
 
 export const themeSlice = createSlice({

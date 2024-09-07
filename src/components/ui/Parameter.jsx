@@ -39,13 +39,13 @@ export default function Parameter({ parameter }) {
 
   return (
     <div>
-      <p className="text-secondary">Key: {parameterKey}</p>
+      <p className="text-primary">Key: {parameterKey}</p>
       <button
         className="group w-full flex items-center justify-between"
         onClick={handleCopyToClipboard}
       >
         <div className="truncate overflow-hidden text-primary">
-          Value: <span className="font-semibold text-xl">{parameterValue}</span>
+          Value: <span className="font-bold text-xl">{parameterValue}</span>
         </div>
         <div>{copyToClipboard()}</div>
       </button>

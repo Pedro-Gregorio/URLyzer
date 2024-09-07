@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 export default function Tutorial({ handleClick, show }) {
   return (
-    <div className={`mt-8 ${show ? "hidden" : null}`}>
+    <section id="tutorial" className={`mt-8 ${show ? "hidden" : null}`}>
       <p className="text-secondary">Paste an URL above to analyze it.</p>
       <p className="text-tertiary">
         Here&apos;s an example (you can click the url):{" "}
@@ -9,6 +9,6 @@ export default function Tutorial({ handleClick, show }) {
           https://helloworld.com?hello=stranger
         </button>
       </p>
-    </div>
+    </section>
   );
 }

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { extract } from "../store/extractSlice";
 import { useState } from "react";
 import Tutorial from "./ui/Tutorial";
+import Result from "./ui/Result";
 
 export default function Main() {
   const origin = useSelector((state) => state.extract.origin);
@@ -51,7 +52,10 @@ export default function Main() {
   }
 
   return (
-    <div className="container mx-auto flex flex-col space-y-6 justify-center mt-10">
+    <section
+      id="main"
+      className="container px-6 mx-auto flex flex-col space-y-6 justify-center mt-10"
+    >
       <div className="border border-primary rounded flex justify-center">
         <form
           onSubmit={handleSubmit}
@@ -73,6 +77,7 @@ export default function Main() {
         </form>
       </div>
       <Tutorial handleClick={handleDummyUrlClick} show={origin !== ""} />
-    </div>
+      <Result />
+    </section>
   );
 }

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Parameters from "./ui/Parameters";
+import Parameters from "./Parameters";
 
 export default function Result() {
   const origin = useSelector((state) => state.extract.origin);
@@ -16,20 +16,20 @@ export default function Result() {
 
   return (
     origin !== "" && (
-      <div className="container mx-auto mt-10 ">
-        <div className="border border-accent rounded px-4 py-4">
-          <h2 className="text-center text-2xl font-bold text-secondary mb-4">
-            Extracted Parameters
+      <section id="result" className="container mx-auto mt-10 ">
+        <div className="border-2 border-tertiary rounded px-4 py-4 bg-accent">
+          <h2 className="text-center text-2xl font-bold text-primary mb-4">
+            Extracted Information
           </h2>
-          <p className="text-sm text-secondary mb-2">
+          <p className="truncate overflow-hidden text-sm text-secondary mb-2">
             Base URL: <span className="text-lg">{origin}</span>
           </p>
-          <div className="p-4 border border-accent rounded">
+          <div className="p-4 border border-tertiary rounded">
             <Parameters parameters={parameters} />
           </div>
           <p className="mt-4 px-4 flex justify-end text-tertiary text-sm">
-            Note: You can quickly copy any query parameter value to your
-            clipboard by clicking on the icon
+            You can quickly copy any query parameter value to your clipboard by
+            clicking on the icon
             <svg
               className="h-6 fill-tertiary"
               viewBox="0 0 24 24"
@@ -40,7 +40,7 @@ export default function Result() {
             </svg>
           </p>
         </div>
-      </div>
+      </section>
     )
   );
 }

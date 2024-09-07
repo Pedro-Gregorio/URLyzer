@@ -21,7 +21,7 @@ export default function Footer() {
   }
 
   return (
-    <div className="mt-10 min-h-fit bg-primary text-background w-full rounded-t-3xl">
+    <footer className="mt-10 min-h-fit bg-primary text-background w-full rounded-t-3xl">
       <div className="py-8 flex flex-col justify-center items-center space-y-6 md:flex-row md:justify-evenly md:space-y-0">
         <button onClick={handleThemeChange}>
           <img
@@ -36,7 +36,7 @@ export default function Footer() {
             href="mailto:pedro-gregorio@outlook.pt"
             className="font-semibold underline hover:text-tertiary transition duration-500"
           >
-            Let's talk!
+            Let&apos;s talk!
           </a>
         </h2>
         <div>
@@ -88,6 +88,6 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
