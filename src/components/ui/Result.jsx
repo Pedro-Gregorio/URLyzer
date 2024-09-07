@@ -8,8 +8,8 @@ export default function Result() {
 
   if (message !== "") {
     return (
-      <div className="container mx-auto px-4 mt-4">
-        <p className="text-secondary">{message}</p>
+      <div className="container mx-auto mt-4 border border-red-700 py-2 px-4 text-center">
+        <p className="text-red-600">{message}</p>
       </div>
     );
   }

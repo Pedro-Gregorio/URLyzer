@@ -46,7 +46,11 @@ export default function Main() {
     } catch (error) {
       console.log(error);
       dispatch(
-        extract({ origin: "", parameters: [], message: "Invalid URL." })
+        extract({
+          origin: "",
+          parameters: [],
+          message: "Error analyzing the URL you submitted: " + error.message,
+        })
       );
     }
   }
