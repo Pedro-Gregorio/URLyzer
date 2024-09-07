@@ -4,9 +4,7 @@ export default function Parameter({ query }) {
   const [copying, setCopying] = useState(false);
 
   function handleCopyToClipboard() {
-    const key = decodeURIComponent(query[0]);
-    const value = decodeURIComponent(query[1]);
-    const clipboardValue = `${key}=${value.replace(/ /g, "+")}`;
+    const clipboardValue = decodeURIComponent(query[1]).replace(/ /g, "+");
     setCopying(true);
     navigator.clipboard.writeText(clipboardValue);
     setTimeout(() => {
