@@ -1,13 +1,25 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { extract } from "../store/extractSlice";
 import { useState } from "react";
+import Tutorial from "./ui/Tutorial";
 
 export default function Main() {
+  const origin = useSelector((state) => state.extract.origin);
   const dispatch = useDispatch();
   const [inpUrl, setInpUrl] = useState("");
 
   function handleInputChange(event) {
     setInpUrl(event.target.value);
+  }
+
+  function handleDummyUrlClick() {
+    dispatch(
+      extract({
+        origin: "https://helloworld.com",
+        parameters: [["hello", "stranger"]],
+        message: "",
+      })
+    );
   }
 
   function handleSubmit(event) {
@@ -39,7 +51,7 @@ export default function Main() {
   }
 
   return (
-    <div className="container mx-auto px-4 mt-8">
+    <div className="container mx-auto flex flex-col space-y-6 justify-center mt-10">
       <div className="border border-primary rounded flex justify-center">
         <form
           onSubmit={handleSubmit}
@@ -60,6 +72,7 @@ export default function Main() {
           </button>
         </form>
       </div>
+      <Tutorial handleClick={handleDummyUrlClick} show={origin !== ""} />
     </div>
   );
 }

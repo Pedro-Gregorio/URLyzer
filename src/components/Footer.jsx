@@ -1,20 +1,46 @@
+import { useDispatch, useSelector } from "react-redux";
+import { setLightTheme, setDarkTheme } from "../store/themeSlice";
 import FooterIcon from "./ui/FooterIcon";
 
 export default function Footer() {
+  const theme = useSelector((state) => state.theme.value);
+  const icon = useSelector((state) => state.theme.icon);
+  const dispatch = useDispatch();
+
+  let buttonClasses =
+    theme === "dark"
+      ? "w-8 hover:animate-spin-slow"
+      : "w-8 hover:animate-pulse";
+
+  function handleThemeChange() {
+    if (theme === "dark") {
+      dispatch(setLightTheme());
+    } else {
+      dispatch(setDarkTheme());
+    }
+  }
+
   return (
     <div className="mt-10 min-h-fit bg-primary text-background w-full rounded-t-3xl">
-      <div className="flex flex-col justify-center items-center md:flex-row md:justify-around">
-        <h2 className="py-4">
-          Made with love by{" "}
+      <div className="py-8 flex flex-col justify-center items-center space-y-6 md:flex-row md:justify-evenly md:space-y-0">
+        <button onClick={handleThemeChange}>
+          <img
+            src={icon}
+            alt={`${theme} mode icon`}
+            className={buttonClasses}
+          />
+        </button>
+        <h2>
+          Found an issue?{" "}
           <a
             href="mailto:pedro-gregorio@outlook.pt"
             className="font-semibold underline hover:text-tertiary transition duration-500"
           >
-            Pedro Gregório
+            Let's talk!
           </a>
         </h2>
         <div>
-          <ul className="py-4 flex flex-col items-center justify-center gap-4 md:flex-row">
+          <ul className="flex flex-col items-center justify-center gap-4 md:flex-row">
             <FooterIcon url={"https://github.com/Pedro-Gregorio"}>
               <svg
                 className="w-8 fill-background group-hover:fill-tertiary transition duration-300"

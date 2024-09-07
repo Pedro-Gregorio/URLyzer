@@ -1,18 +1,21 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-export default function Parameter({ query }) {
+export default function Parameter({ parameter }) {
   const [copying, setCopying] = useState(false);
 
+  const parameterKey = decodeURIComponent(parameter[0]);
+  const parameterValue = decodeURIComponent(parameter[1]).replace(/ /g, "+");
+
   function handleCopyToClipboard() {
-    const clipboardValue = decodeURIComponent(query[1]).replace(/ /g, "+");
     setCopying(true);
-    navigator.clipboard.writeText(clipboardValue);
+    navigator.clipboard.writeText(parameterValue);
     setTimeout(() => {
       setCopying(false);
     }, 4000);
   }
 
-  function clipboard() {
+  function copyToClipboard() {
     if (copying) {
       return <p className="text-primary animate-pulse">Copied!</p>;
     } else {
@@ -36,15 +39,15 @@ export default function Parameter({ query }) {
 
   return (
     <div>
-      <p className="text-tertiary">Key: {query[0]}</p>
+      <p className="text-secondary">Key: {parameterKey}</p>
       <button
         className="group w-full flex items-center justify-between"
         onClick={handleCopyToClipboard}
       >
         <div className="truncate overflow-hidden text-primary">
-          Value: <span className="font-semibold text-xl">{query[1]}</span>
+          Value: <span className="font-semibold text-xl">{parameterValue}</span>
         </div>
-        <div>{clipboard()}</div>
+        <div>{copyToClipboard()}</div>
       </button>
     </div>
   );
